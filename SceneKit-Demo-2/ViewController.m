@@ -86,9 +86,16 @@
   
 }
 
-- (void)sceneTapped:(UITapGestureRecognizer *)gesture
+- (void)sceneTapped:(UITapGestureRecognizer *)recognizer
 {
-  
+    CGPoint location = [recognizer locationInView:self.sceneView];
+    NSArray *hitResults = [self.sceneView hitTest:location options:nil];
+    if (hitResults.count > 0) {
+        SCNHitTestResult *hitTestResult = (SCNHitTestResult *)hitResults[0];
+        SCNNode *node = hitTestResult.node;
+        [node removeFromParentNode];
+    }
+    
 }
 
 @end
