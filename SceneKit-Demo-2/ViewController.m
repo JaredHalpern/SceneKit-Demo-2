@@ -93,7 +93,18 @@
     if (hitResults.count > 0) {
         SCNHitTestResult *hitTestResult = (SCNHitTestResult *)hitResults[0];
         SCNNode *node = hitTestResult.node;
-        [node removeFromParentNode];
+
+      if (node == self.buttonNode) {
+        [SCNTransaction begin];
+        [SCNTransaction setAnimationDuration:0.5];
+        SCNMaterial *material = node.geometry.materials[0];
+        material.diffuse.contents = [UIColor whiteColor];
+        [SCNTransaction commit];
+        
+        SCNAction *action = [SCNAction moveBy:SCNVector3Make(0, -0.8, 0) duration:0.5];
+        [node runAction:action];
+      }
+      
     }
     
 }
