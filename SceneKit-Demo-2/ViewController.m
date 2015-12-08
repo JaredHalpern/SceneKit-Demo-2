@@ -83,7 +83,6 @@
   [self.sceneView.scene.rootNode addChildNode:self.buttonNode];
   [self.sceneView.scene.rootNode addChildNode:self.sphere1Node];
   [self.sceneView.scene.rootNode addChildNode:self.sphere2Node];
-  
 }
 
 - (void)sceneTapped:(UITapGestureRecognizer *)recognizer
